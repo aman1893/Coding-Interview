@@ -55,7 +55,7 @@ int gcd (int a, int b, int & x, int & y) {
 
 ### a^n mod m
 
-```
+```c++
 int binpow (int a, int n, int m) {
     int res = 1;
     while (n) {
