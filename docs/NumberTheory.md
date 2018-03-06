@@ -53,6 +53,22 @@ int gcd (int a, int b, int & x, int & y) {
 }
 ```
 
+### a^n mod m
+
+```
+int binpow (int a, int n, int m) {
+    int res = 1;
+    while (n) {
+        if (n & 1)
+            res = (1LL * res * a) % m;
+        a = (1LL * a * a) % m;
+        n >>= 1;
+    }
+    return res;
+}
+```
+
+
 
 
 
