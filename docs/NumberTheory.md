@@ -1,8 +1,9 @@
 ## Number Theory
 
 ### GCD (iterative)
+While writing code just assume ```a >= b```. If b is greater than a, then the numbers will automatically reverse after the first iteration.
 
-```C++
+```c++
 int gcd (int a, int b) {
     while (b) {
         a %= b;
@@ -13,17 +14,21 @@ int gcd (int a, int b) {
 ```
 
 ### LCM
+We can use the gcd function above to calculate the LCM.  
+>We are dividing a by gcd first to avoid int overflow in the case when LCM lies in the int range but (a * b) can exceeds the int range.  
 
-```C++
+```c++
 int lcm (int a, int b) {
     return a / gcd (a, b) * b;
 }
 ```
 
-### Euclid's Extended GCD
-If g is the GCD of a and b, there exists x & y such that the below condition holds:
-ax + by = g
-Next Iteration: (b%a)x1 + ay1 = g
+### Extended Euclidean algorithm
+It computes, in addition to the greatest common divisor of integers a and b, also the coefficients of Bézout's identity, which are integers x and y such that
+ax + by = gcd(a,b)  
+  
+a and b are computed recursively. We can write them in terms of coefficients of the numbers in the next iteration.  
+Next iteration: (b%a)x1 + ay1 = gcd(a,b)
 
 Then x and y can be expressed in terms of x1 and y1 and can be calculated recursively.
 
@@ -32,7 +37,9 @@ x = y1 - (b/a)*x1
 y = x1
 ```
 
-```C++
+[Emaxx Algo link](https://e-maxx.ru/algo/extended_euclid_algorithm)
+
+```c++
 int gcd (int a, int b, int & x, int & y) {
     if (a == 0) {
         x = 0; y = 1;
@@ -45,7 +52,6 @@ int gcd (int a, int b, int & x, int & y) {
     return d;
 }
 ```
-
 
 
 
